@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approche Agile</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            gap: 20px;
+        }
+
+        header {
+            width: 280px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            position: sticky;
+            top: 20px;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        header h2 {
+            font-size: 1.1rem;
+            color: #6c757d;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 8px;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            flex: 0;
+            gap: 10px;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 12px 15px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        nav ul:hover,
+        nav ul.activeTab,
+        a {
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+
+        }
+
+        main {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            min-height: 80vh;
+        }
+
+        .definitions,
+        .etapes,
+        .methodes,
+        .main {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .etapesList li {
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 6px;
+        }
+
+        h3 {
+            color: #0056b3;
+        }
+        a {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Approche Agile</h1>
+        <h2>Chapitres</h2>
+
+        <nav>
+            <ul id="main" class="activeTab">Home</ul>
+            <ul id="definitions">Définitions</ul>
+            <ul id="etapes">Étapes pour réaliser un projet</ul>
+            <ul id="mgp">Méthodes de gestion d'un projet</ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="sectionMain" class="main active">
+            <h2>Accueil</h2>
+
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR6QvpBw-WYjRfCj5q2pssXe9UGYxFMoKceurIZFGlx9b5PMsDavqn2ltc&s=10"
+                alt="Approche Agile">
+        </section>
+
+
+        <section id="sectionDef" class="definitions">
+
+            <h2>Définitions</h2>
+
+            <h3 id="projet">Projet</h3>
+            <p>
+                Un projet est un ensemble d’activités organisées et ordonnées afin d’atteindre
+                un objectif précis et de produire un résultat déterminé (livrable) avec des
+                ressources et dans un délai défini.
+            </p>
+
+            <h3 id="gestion">Gestion de Projet</h3>
+            <p>
+                La gestion de projet est l’ensemble des méthodes, des techniques et des outils
+                utilisés pour organiser, planifier, réaliser, suivre et contrôler un projet afin
+                d’atteindre ses objectifs tout en respectant les contraintes de délais, budget et de qualité.
+            </p>
+
+            <h3 id="ressource">Une ressource</h3>
+            <p>
+                Une ressource est un moyen ou un élément nécessaire pour réaliser un projet.
+            </p>
+
+            <h3 id="livrable">Un livrable</h3>
+            <p>
+                Un livrable est un résultat concret, vérifiable et attendu produit au cours ou à la fin du projet.
+            </p>
+
+            <h3 id="charte">Charte de Projet</h3>
+            <p>
+                C’est un document qui formalise officiellement l’existence du projet et présente ses principales informations :
+            </p>
+
+            <ol>
+                <li>Objectifs</li>
+                <li>Périmètre</li>
+                <li>Responsables</li>
+                <li>Ressources</li>
+                <li>Délais</li>
+                <li>Contraintes</li>
+                <li>Principaux Livrables</li>
+            </ol>
+
+            <h3 id="partiesPrenantes">Parties Prenantes</h3>
+            <p>
+                Ce sont toutes les personnes, groupes ou organisations qui participent au projet,
+                peuvent influencer son déroulement et sont concernées par ses résultats.
+                Elles peuvent être internes ou externes.
+            </p>
+
+            <h3>Matrice RACI (Réalisation, Approbation, Consultation, Information)</h3>
+            <p>
+                La matrice RACI d'assignation des responsabilités est un tableau qui permet
+                de répartir clairement les rôles et les responsabilités entre les membres d’un
+                projet pour chaque activité.
+            </p>
+
+            <h3 id="analyse">Analyse de Besoins</h3>
+            <p>
+                Étape essentielle de la gestion de projet qui consiste à identifier, comprendre,
+                comparer (étude de marché), formaliser et prioriser les besoins et les attentes
+                des parties prenantes afin de déterminer précisément ce que le projet doit réaliser.
+            </p>
+
+            <h3 id="cahier">Cahier Des Charges</h3>
+            <p>
+                C'est un document qui décrit les attentes et les contraintes des clients pour un projet.
+                Il est essentiel pour bien comprendre les besoins du client :
+                <br>
+                - Besoin exprimé par le client -> Explicite
+                <br>
+                - Besoin défini par les parties prenantes -> Implicite
+            </p>
+
+            <h3 id="perimetre">Périmètre D'un Projet</h3>
+            <p>
+                Décrit les limites du projet : ce qui est inclus et ce qui est exclu.
+            </p>
+
+            <h3 id="contexte">Contexte D'un Projet</h3>
+            <p>
+                Ensemble des informations qui caractérisent un projet et lui donnent de la profondeur.
+                Le contexte inclut les facteurs internes et externes qui influencent le projet
+                (économique, environnemental, etc.).
+            </p>
+
+            <h3 id="risque">Risque</h3>
+            <p>
+            c’est un evenement incertain qui peut avoir un impact positif ou negatif sur la realisation des objectifs d’un projet notamment en terme de cout / delai / qualite / perimetre.Mathematiquement c’est la probabilite d’un risque egale la possibilite qu’un probleme potentiel se produise au cours de projet
+                pour le cas d’un projet informatique :
+                <ol>
+            <li>	risques techniques (probleme liees au technologies / logicielles / infrastructure)</li>
+            <li>	risques financiere ( depassement du budget /ئaugmentation imprevu des couts)</li>
+            <li>	risques lies au delais ( evenemets peuvenet provoque un retard dans la realisation de projet)</li>
+            <li>	risques humains / organisationel ( difficulte liee au membres de l’equipe a la communication ou l’organisation)</li>
+            <li>	risques de securite ( menaces qui peuvent compromettre la confidentialite et l’integrite , la disponibilite de donnes)</li>
+            <li>	risque juridique / reglementaires ( non respect des lois, des contrats  ou des obligations reglementaires)</li>
+                </ol>
+            </p>
+        </section>
+
+
+        <section id="sectionEtapes" class="etapes">
+
+            <h2>Étapes pour réaliser un projet</h2>
+
+            <ol class="etapesList">
+                <li>Analyse de besoins</li>
+                <li>Conception</li>
+                <li>Exécution</li>
+                <li>Test</li>
+                <li>Déploiement / Livraison</li>
+                <li>Maintenance</li>
+            </ol>
+
+        </section>
+
+
+        <section id="sectionMethodes" class="methodes">
+
+            <h2>Méthodes Prévisible / Traditionnelle</h2>
+
+            <h3>Méthode Cycle en Cascade</h3>
+            <p>
+                La méthode du cycle en cascade (ou Waterfall) est une approche de gestion
+                de projet linéaire et séquentielle où chaque phase doit être entièrement
+                complétée avant de passer à la suivante.
+            </p>
+
+            <img src="https://blog-gestion-de-projet.com/wp-content/uploads/2021/01/Modele-en-cascade-generique.png.webp"
+                alt="Cycle en Cascade">
+            <a href="https://www.atlassian.com/fr/agile/project-management/waterfall-methodology">Read more</a>
+
+            <h3>Méthode V</h3>
+            <p>
+                La méthode V est un modèle séquentiel de gestion de projet qui relie chaque
+                étape de conception (branche descendante) à une phase de test ou de validation
+                correspondante (branche ascendante).
+            </p>
+            <img src="https://www.manager-go.com/assets/Uploads/Cycle-V-min.png"
+                alt="Methode en V">
+            <a href="https://www.manager-go.com/gestion-de-projet/cycle-en-v.htm">Read more</a>
+
+
+            <h3>Méthode Cycle en Y</h3>
+            <p>
+                La Méthode Cycle en Y est une approche de gestion de projet et de développement
+                logiciel qui sépare les aspects fonctionnels (le métier) des aspects techniques (l'architecture).
+            </p>
+
+            <img src="https://collonvillethomas.wordpress.com/wp-content/uploads/2020/04/4b0c6-processus2bfig2b2.11.png"
+     alt="Cycle en Y">
+
+
+            <h2>Méthodes Imprévisible / Agile</h2>
+
+            <h3>Méthode Scrum</h3>
+            <h3>Méthode Kanban</h3>
+            <h3>Méthode XP</h3>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const btnDefinitions = document.getElementById('definitions');
+        const btnEtapes = document.getElementById('etapes');
+        const btnMgp = document.getElementById('mgp');
+        const btnMain = document.getElementById('main');
+
+        const navBtns = [btnMain, btnDefinitions, btnEtapes, btnMgp];
+
+        const sectionDef = document.getElementById('sectionDef');
+        const sectionEtapes = document.getElementById('sectionEtapes');
+        const sectionMethodes = document.getElementById('sectionMethodes');
+        const sectionMain = document.getElementById('sectionMain');
+
+
+        function afficherSection(sectionAAfficher, activeBtn) {
+
+            sectionDef.classList.remove('active');
+            sectionEtapes.classList.remove('active');
+            sectionMethodes.classList.remove('active');
+            sectionMain.classList.remove('active');
+
+            navBtns.forEach(btn => btn.classList.remove('activeTab'));
+
+            sectionAAfficher.classList.add('active');
+            activeBtn.classList.add('activeTab');
+        }
+
+
+        btnDefinitions.addEventListener('click', () =>
+            afficherSection(sectionDef, btnDefinitions)
+        );
+
+        btnEtapes.addEventListener('click', () =>
+            afficherSection(sectionEtapes, btnEtapes)
+        );
+
+        btnMgp.addEventListener('click', () =>
+            afficherSection(sectionMethodes, btnMgp)
+        );
+
+        btnMain.addEventListener('click', () =>
+            afficherSection(sectionMain, btnMain)
+        );
+
+    </script>
+
+</body>
+</html>
+```
