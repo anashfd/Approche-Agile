@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approche Agile</title>
-
     <style>
         * {
             box-sizing: border-box;
@@ -19,6 +18,7 @@
             color: #333;
             display: flex;
             gap: 20px;
+            align-items: flex-start;
         }
 
         header {
@@ -45,11 +45,10 @@
         nav {
             display: flex;
             flex-direction: column;
-            flex: 0;
             gap: 10px;
         }
 
-        nav ul {
+        nav .tab {
             margin: 0;
             padding: 12px 15px;
             background-color: #e9ecef;
@@ -58,13 +57,10 @@
             font-weight: bold;
         }
 
-        nav ul:hover,
-        nav ul.activeTab,
-        a {
+        nav .tab:hover,
+        nav .tab.activeTab {
             background-color: #0056b3;
             color: white;
-            text-decoration: none;
-
         }
 
         main {
@@ -73,17 +69,6 @@
             padding: 30px;
             border-radius: 8px;
             min-height: 80vh;
-        }
-
-        .definitions,
-        .etapes,
-        .methodes,
-        .main {
-            display: none;
-        }
-
-        .active {
-            display: block;
         }
 
         .etapesList li {
@@ -103,12 +88,233 @@
         h3 {
             color: #0056b3;
         }
-        a {
+
+        a.link {
+            display: inline-block;
             padding: 10px;
-            margin-bottom: 10px;
             border-radius: 5px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
         }
 
+        /* boites */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .box {
+            background-color: #e9ecef;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #0056b3;
+            align-self: start;
+        }
+
+        .box:hover {
+            border-color: #0056b3;
+        }
+
+        .box.big {
+            font-size: 1.2rem;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .body ul,
+        .body ol {
+            margin: 8px 0;
+            padding-left: 22px;
+        }
+
+        table.kb {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        table.kb th,
+        table.kb td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        table.kb th {
+            background: #e9ecef;
+        }
+
+        .chap {
+            display: none;
+        }
+
+        .chap.active {
+            display: block;
+        }
+
+        nav .label {
+            margin: 12px 0 0;
+            font-size: .8rem;
+            color: #6c757d;
+            font-weight: bold;
+        }
+
+        .group {
+            margin: 28px 0 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .intro {
+            color: #555;
+        }
+
+        .nextprev {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 10px;
+        }
+
+        .nextprev button {
+            background: #e9ecef;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .nextprev button:hover {
+            background: #0056b3;
+            color: white;
+        }
+
+        .plan li {
+            margin: 8px 0;
+            color: #0056b3;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .plan li:hover {
+            text-decoration: underline;
+        }
+
+        .res a {
+            color: #0056b3;
+        }
+
+        figure {
+            margin: 20px 0;
+        }
+
+        figcaption {
+            text-align: center;
+            font-size: .85rem;
+            color: #6c757d;
+        }
+
+        .vid {
+            position: relative;
+            padding-top: 56.25%;
+            margin: 14px 0 4px;
+        }
+
+        .vid iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 6px;
+        }
+
+        .src {
+            font-size: .85rem;
+            color: #6c757d;
+            margin: 0 0 12px;
+        }
+
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+            margin: 12px 0;
+            font-size: .9rem;
+        }
+
+        .flow span {
+            background: #fff;
+            border: 1px solid #0056b3;
+            border-radius: 14px;
+            padding: 4px 10px;
+        }
+
+        .modal-body svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 12px auto;
+        }
+
+        .modal-body {
+            line-height: 1.5;
+        }
+
+        /* popup */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-box {
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 720px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px 28px;
+        }
+
+        .modal-box h2 {
+            margin-top: 0;
+            padding-right: 30px;
+            color: #0056b3;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            border: none;
+            background: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #6c757d;
+        }
     </style>
 </head>
 
@@ -117,237 +323,256 @@
     <header>
         <h1>Approche Agile</h1>
         <h2>Chapitres</h2>
-
-        <nav>
-            <ul id="main" class="activeTab">Home</ul>
-            <ul id="definitions">Définitions</ul>
-            <ul id="etapes">Étapes pour réaliser un projet</ul>
-            <ul id="mgp">Méthodes de gestion d'un projet</ul>
-        </nav>
+        <nav id="menu"></nav>
     </header>
 
-    <main>
+    <main id="content"></main>
 
-        <section id="sectionMain" class="main active">
-            <h2>Accueil</h2>
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
 
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR6QvpBw-WYjRfCj5q2pssXe9UGYxFMoKceurIZFGlx9b5PMsDavqn2ltc&s=10"
-                alt="Approche Agile">
-        </section>
-
-
-        <section id="sectionDef" class="definitions">
-
-            <h2>Définitions</h2>
-
-            <h3 id="projet">Projet</h3>
-            <p>
-                Un projet est un ensemble d’activités organisées et ordonnées afin d’atteindre
-                un objectif précis et de produire un résultat déterminé (livrable) avec des
-                ressources et dans un délai défini.
-            </p>
-
-            <h3 id="gestion">Gestion de Projet</h3>
-            <p>
-                La gestion de projet est l’ensemble des méthodes, des techniques et des outils
-                utilisés pour organiser, planifier, réaliser, suivre et contrôler un projet afin
-                d’atteindre ses objectifs tout en respectant les contraintes de délais, budget et de qualité.
-            </p>
-
-            <h3 id="ressource">Une ressource</h3>
-            <p>
-                Une ressource est un moyen ou un élément nécessaire pour réaliser un projet.
-            </p>
-
-            <h3 id="livrable">Un livrable</h3>
-            <p>
-                Un livrable est un résultat concret, vérifiable et attendu produit au cours ou à la fin du projet.
-            </p>
-
-            <h3 id="charte">Charte de Projet</h3>
-            <p>
-                C’est un document qui formalise officiellement l’existence du projet et présente ses principales informations :
-            </p>
-
-            <ol>
-                <li>Objectifs</li>
-                <li>Périmètre</li>
-                <li>Responsables</li>
-                <li>Ressources</li>
-                <li>Délais</li>
-                <li>Contraintes</li>
-                <li>Principaux Livrables</li>
-            </ol>
-
-            <h3 id="partiesPrenantes">Parties Prenantes</h3>
-            <p>
-                Ce sont toutes les personnes, groupes ou organisations qui participent au projet,
-                peuvent influencer son déroulement et sont concernées par ses résultats.
-                Elles peuvent être internes ou externes.
-            </p>
-
-            <h3>Matrice RACI (Réalisation, Approbation, Consultation, Information)</h3>
-            <p>
-                La matrice RACI d'assignation des responsabilités est un tableau qui permet
-                de répartir clairement les rôles et les responsabilités entre les membres d’un
-                projet pour chaque activité.
-            </p>
-
-            <h3 id="analyse">Analyse de Besoins</h3>
-            <p>
-                Étape essentielle de la gestion de projet qui consiste à identifier, comprendre,
-                comparer (étude de marché), formaliser et prioriser les besoins et les attentes
-                des parties prenantes afin de déterminer précisément ce que le projet doit réaliser.
-            </p>
-
-            <h3 id="cahier">Cahier Des Charges</h3>
-            <p>
-                C'est un document qui décrit les attentes et les contraintes des clients pour un projet.
-                Il est essentiel pour bien comprendre les besoins du client :
-                <br>
-                - Besoin exprimé par le client -> Explicite
-                <br>
-                - Besoin défini par les parties prenantes -> Implicite
-            </p>
-
-            <h3 id="perimetre">Périmètre D'un Projet</h3>
-            <p>
-                Décrit les limites du projet : ce qui est inclus et ce qui est exclu.
-            </p>
-
-            <h3 id="contexte">Contexte D'un Projet</h3>
-            <p>
-                Ensemble des informations qui caractérisent un projet et lui donnent de la profondeur.
-                Le contexte inclut les facteurs internes et externes qui influencent le projet
-                (économique, environnemental, etc.).
-            </p>
-
-            <h3 id="risque">Risque</h3>
-            <p>
-            c’est un evenement incertain qui peut avoir un impact positif ou negatif sur la realisation des objectifs d’un projet notamment en terme de cout / delai / qualite / perimetre.Mathematiquement c’est la probabilite d’un risque egale la possibilite qu’un probleme potentiel se produise au cours de projet
-                pour le cas d’un projet informatique :
-                <ol>
-            <li>	risques techniques (probleme liees au technologies / logicielles / infrastructure)</li>
-            <li>	risques financiere ( depassement du budget /ئaugmentation imprevu des couts)</li>
-            <li>	risques lies au delais ( evenemets peuvenet provoque un retard dans la realisation de projet)</li>
-            <li>	risques humains / organisationel ( difficulte liee au membres de l’equipe a la communication ou l’organisation)</li>
-            <li>	risques de securite ( menaces qui peuvent compromettre la confidentialite et l’integrite , la disponibilite de donnes)</li>
-            <li>	risque juridique / reglementaires ( non respect des lois, des contrats  ou des obligations reglementaires)</li>
-                </ol>
-            </p>
-        </section>
-
-
-        <section id="sectionEtapes" class="etapes">
-
-            <h2>Étapes pour réaliser un projet</h2>
-
-            <ol class="etapesList">
-                <li>Analyse de besoins</li>
-                <li>Conception</li>
-                <li>Exécution</li>
-                <li>Test</li>
-                <li>Déploiement / Livraison</li>
-                <li>Maintenance</li>
-            </ol>
-
-        </section>
-
-
-        <section id="sectionMethodes" class="methodes">
-
-            <h2>Méthodes Prévisible / Traditionnelle</h2>
-
-            <h3>Méthode Cycle en Cascade</h3>
-            <p>
-                La méthode du cycle en cascade (ou Waterfall) est une approche de gestion
-                de projet linéaire et séquentielle où chaque phase doit être entièrement
-                complétée avant de passer à la suivante.
-            </p>
-
-            <img src="https://blog-gestion-de-projet.com/wp-content/uploads/2021/01/Modele-en-cascade-generique.png.webp"
-                alt="Cycle en Cascade">
-            <a href="https://www.atlassian.com/fr/agile/project-management/waterfall-methodology">Read more</a>
-
-            <h3>Méthode V</h3>
-            <p>
-                La méthode V est un modèle séquentiel de gestion de projet qui relie chaque
-                étape de conception (branche descendante) à une phase de test ou de validation
-                correspondante (branche ascendante).
-            </p>
-            <img src="https://www.manager-go.com/assets/Uploads/Cycle-V-min.png"
-                alt="Methode en V">
-            <a href="https://www.manager-go.com/gestion-de-projet/cycle-en-v.htm">Read more</a>
-
-
-            <h3>Méthode Cycle en Y</h3>
-            <p>
-                La Méthode Cycle en Y est une approche de gestion de projet et de développement
-                logiciel qui sépare les aspects fonctionnels (le métier) des aspects techniques (l'architecture).
-            </p>
-
-            <img src="https://collonvillethomas.wordpress.com/wp-content/uploads/2020/04/4b0c6-processus2bfig2b2.11.png"
-     alt="Cycle en Y">
-
-
-            <h2>Méthodes Imprévisible / Agile</h2>
-
-            <h3>Méthode Scrum</h3>
-            <h3>Méthode Kanban</h3>
-            <h3>Méthode XP</h3>
-
-        </section>
-
-    </main>
-
-
+    <script src="data.js"></script>
     <script>
+        /* page elements */
+        const menu = document.getElementById("menu");
+        const content = document.getElementById("content");
+        const modal = document.getElementById("modal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalBody = document.getElementById("modalBody");
 
-        const btnDefinitions = document.getElementById('definitions');
-        const btnEtapes = document.getElementById('etapes');
-        const btnMgp = document.getElementById('mgp');
-        const btnMain = document.getElementById('main');
-
-        const navBtns = [btnMain, btnDefinitions, btnEtapes, btnMgp];
-
-        const sectionDef = document.getElementById('sectionDef');
-        const sectionEtapes = document.getElementById('sectionEtapes');
-        const sectionMethodes = document.getElementById('sectionMethodes');
-        const sectionMain = document.getElementById('sectionMain');
-
-
-        function afficherSection(sectionAAfficher, activeBtn) {
-
-            sectionDef.classList.remove('active');
-            sectionEtapes.classList.remove('active');
-            sectionMethodes.classList.remove('active');
-            sectionMain.classList.remove('active');
-
-            navBtns.forEach(btn => btn.classList.remove('activeTab'));
-
-            sectionAAfficher.classList.add('active');
-            activeBtn.classList.add('activeTab');
+        /* popup */
+        function openPopup(item) {
+            modalTitle.textContent = item.title;
+            modalBody.innerHTML = item.text;
+            modal.classList.add("open");
         }
 
+        function closePopup() {
+            modal.classList.remove("open");
+            modalBody.innerHTML = "";
+        }
 
-        btnDefinitions.addEventListener('click', () =>
-            afficherSection(sectionDef, btnDefinitions)
-        );
+        document.getElementById("modalClose").addEventListener("click", closePopup);
 
-        btnEtapes.addEventListener('click', () =>
-            afficherSection(sectionEtapes, btnEtapes)
-        );
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                closePopup();
+            }
+        });
 
-        btnMgp.addEventListener('click', () =>
-            afficherSection(sectionMethodes, btnMgp)
-        );
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closePopup();
+            }
+        });
 
-        btnMain.addEventListener('click', () =>
-            afficherSection(sectionMain, btnMain)
-        );
+        /* boxes */
+        function createBox(title, isBig, onClick) {
+            const box = document.createElement("div");
+            box.className = isBig ? "box big" : "box";
+            box.textContent = title;
+            box.addEventListener("click", onClick);
+            return box;
+        }
 
+        function createGrid(items) {
+            const grid = document.createElement("div");
+            grid.className = "grid";
+
+            items.forEach(function (item) {
+                grid.appendChild(createBox(item.title, false, function () {
+                    openPopup(item);
+                }));
+            });
+
+            return grid;
+        }
+
+        /* chapters */
+        function openChapter(id) {
+            chapters.forEach(function (chapter) {
+                const isActive = chapter.id === id;
+                document.getElementById("chap-" + chapter.id).classList.toggle("active", isActive);
+                document.getElementById("tab-" + chapter.id).classList.toggle("activeTab", isActive);
+            });
+
+            if (id === "methods") {
+                showFamilies();
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        function createButton(text, chapterId) {
+            const button = document.createElement("button");
+            button.textContent = text;
+            button.addEventListener("click", function () {
+                openChapter(chapterId);
+            });
+            return button;
+        }
+
+        function createNavigation(index) {
+            const bar = document.createElement("div");
+            bar.className = "nextprev";
+
+            const left = document.createElement("span");
+            const right = document.createElement("span");
+
+            if (index > 0) {
+                const previous = chapters[index - 1];
+                left.appendChild(createButton("← " + previous.title, previous.id));
+            }
+
+            if (index < chapters.length - 1) {
+                const next = chapters[index + 1];
+                right.appendChild(createButton(next.title + " →", next.id));
+            }
+
+            bar.appendChild(left);
+            bar.appendChild(right);
+            return bar;
+        }
+
+        function createChapter(chapter, index) {
+            const section = document.createElement("section");
+            section.className = "chap";
+            section.id = "chap-" + chapter.id;
+
+            if (chapter.type === "methods") {
+                section.innerHTML =
+                    '<h2 id="methodsTitle"></h2>' +
+                    '<div class="grid" id="methodsGrid"></div>' +
+                    '<div id="methodsDetail"></div>';
+            } else {
+                const title = chapter.number ? chapter.number + ". " + chapter.title : chapter.title;
+                let html = "<h2>" + title + "</h2>";
+
+                if (chapter.intro) {
+                    html += '<p class="intro">' + chapter.intro + "</p>";
+                }
+                if (chapter.html) {
+                    html += chapter.html;
+                }
+                section.innerHTML = html;
+
+                if (chapter.groups) {
+                    chapter.groups.forEach(function (group) {
+                        const heading = document.createElement("h3");
+                        heading.className = "group";
+                        heading.textContent = group.title;
+                        section.appendChild(heading);
+                        section.appendChild(createGrid(group.items));
+                    });
+                }
+            }
+
+            section.appendChild(createNavigation(index));
+            content.appendChild(section);
+        }
+
+        /* menu */
+        function createMenu() {
+            let currentPart = "";
+
+            chapters.forEach(function (chapter) {
+                if (chapter.part && chapter.part !== currentPart) {
+                    currentPart = chapter.part;
+                    const label = document.createElement("div");
+                    label.className = "label";
+                    label.textContent = currentPart;
+                    menu.appendChild(label);
+                }
+
+                const tab = document.createElement("div");
+                tab.className = "tab";
+                tab.id = "tab-" + chapter.id;
+                tab.textContent = chapter.number ? chapter.number + ". " + chapter.title : chapter.title;
+                tab.addEventListener("click", function () {
+                    openChapter(chapter.id);
+                });
+                menu.appendChild(tab);
+            });
+        }
+
+        function createPlan() {
+            const plan = document.getElementById("plan");
+
+            chapters.forEach(function (chapter) {
+                if (chapter.number) {
+                    const line = document.createElement("li");
+                    line.textContent = chapter.title;
+                    line.addEventListener("click", function () {
+                        openChapter(chapter.id);
+                    });
+                    plan.appendChild(line);
+                }
+            });
+        }
+
+        /* methods */
+        function showFamilies() {
+            document.getElementById("methodsTitle").textContent = "Méthodes de gestion d'un projet";
+            document.getElementById("methodsDetail").innerHTML = "";
+
+            const grid = document.getElementById("methodsGrid");
+            grid.innerHTML = "";
+
+            families.forEach(function (family) {
+                grid.appendChild(createBox(family.title, true, function () {
+                    showMethods(family);
+                }));
+            });
+        }
+
+        function showMethods(family) {
+            document.getElementById("methodsTitle").textContent = family.title;
+            document.getElementById("methodsDetail").innerHTML = "<p>" + family.intro + "</p>";
+
+            const grid = document.getElementById("methodsGrid");
+            grid.innerHTML = "";
+
+            family.methods.forEach(function (method) {
+                grid.appendChild(createBox(method.title, true, function () {
+                    showDetail(method);
+                }));
+            });
+        }
+
+        function showDetail(method) {
+            document.getElementById("methodsTitle").textContent = method.title;
+            document.getElementById("methodsGrid").innerHTML = "";
+
+            let html = "<p>" + method.text + "</p>";
+            if (method.img) {
+                html += '<img src="' + method.img + '" alt="' + method.title + '">';
+            }
+            if (method.link) {
+                html += '<a class="link" href="' + method.link + '" target="_blank" rel="noopener">Read more</a>';
+            }
+            document.getElementById("methodsDetail").innerHTML = html;
+        }
+
+        /* start */
+        let chapterNumber = 0;
+        chapters.forEach(function (chapter) {
+            if (chapter.id !== "accueil") {
+                chapterNumber++;
+                chapter.number = chapterNumber;
+            }
+        });
+
+        createMenu();
+        chapters.forEach(createChapter);
+        createPlan();
+        openChapter("accueil");
     </script>
 
 </body>
+
 </html>
-```
